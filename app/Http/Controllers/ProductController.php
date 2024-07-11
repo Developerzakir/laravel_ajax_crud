@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = Product::latest()->paginate(3);
         return view('products', compact('products'));
     } //end method
 
@@ -58,6 +58,21 @@ class ProductController extends Controller
         return response()->json([
             'status' => 'success'
         ]);
+
+    } //end method
+
+    public function deleteProduct(Request $request)
+    {
+        Product::find($request->product_id)->delete();
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }//end method
+
+    public function pagination()
+    {
+        $products = Product::latest()->paginate(5);
+        return view('pagination_products', compact('products'))->render();
 
     } //end method
 
