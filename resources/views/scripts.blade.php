@@ -12,7 +12,32 @@
 
 <script>
 $(document).ready(function(){
-//   alert('hi');
+  $(document).on('click','.add_product', function(e){
+    e.preventDefault();
+
+    let name = $("#name").val();
+    let price = $("#price").val();
+    
+    $.ajax({
+        url: "{{route('add.product')}}",
+        method:'post',
+        data:{name:name, price:price},
+        success:function(res){
+            if(res.status == 'success'){
+                $("#addModal").modal('hide');
+                $("#storeProduct")[0].reset();
+            }
+
+        },error:function(err){
+            let error = err.responseJSON;
+            $.each(error.errors, function(index,value){
+                $('.errMsg').append('<span class="text-danger">'+value+'</span>' + '<br>');
+            })
+        }
+
+    })
+
+  })
 
 });
 </script>
