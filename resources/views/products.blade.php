@@ -38,7 +38,16 @@
                   <td>{{$item->name}}</td>
                   <td>{{$item->price}}</td>
                   <td>
-                    <a href="" class="btn btn-success btn-sm"><i class="las la-edit"></i></a>
+                    <a href=""
+                     class="btn btn-success btn-sm update_product_data"
+                      data-bs-toggle="modal"
+                      data-bs-target="#updateModal"
+                      data-id="{{$item->id}}"
+                      data-name="{{$item->name}}"
+                      data-price="{{$item->price}}"
+
+
+                       ><i class="las la-edit"></i></a>
                     <a href="" class="btn btn-danger btn-sm"><i class="las la-times"></i></a>
                   </td>
                 </tr>
@@ -53,6 +62,7 @@
     </div>
   
   @include('create')
+  @include('edit')
   @include('scripts')
 
   </body>
