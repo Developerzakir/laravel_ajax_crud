@@ -26,6 +26,7 @@ $(document).ready(function(){
             if(res.status == 'success'){
                 $("#addModal").modal('hide');
                 $("#storeProduct")[0].reset();
+                $('.table').load(location.href+ ' .table');
             }
 
         },error:function(err){
