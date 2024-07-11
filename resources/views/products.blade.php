@@ -20,7 +20,11 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
           <h2 class="my-5 text-center">Laravel Ajax Crud</h2>
-          <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add Product</a>
+          <div class="d-flex">
+            <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add Product</a>
+           
+           <a href="javascript:void(0)" id="exportData" class="btn btn-primary ms-auto">Export Data</a>
+          </div>
           <div class="table-data mt-3">
             <table class="table table-bordered">
               <thead>

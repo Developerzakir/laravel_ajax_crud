@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport; 
 
 class ProductController extends Controller
 {
@@ -74,6 +76,11 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(5);
         return view('pagination_products', compact('products'))->render();
 
+    } //end method
+
+    public function exportProducts()
+    {
+       return Excel::download(new ProductsExport, 'products.xlsx');
     } //end method
 
 }

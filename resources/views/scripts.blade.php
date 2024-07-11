@@ -120,6 +120,30 @@ $(document).ready(function(){
     })
   }
 
+  //export products
+  document.getElementById('exportData').addEventListener('click', function () {
+    $.ajax({
+        url: "{{ route('export.products') }}",
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function (data) {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = 'products.xlsx';
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        },
+        error: function (xhr, status, error) {
+            console.error('Export failed:', error);
+        }
+    });
+});
+
 
 
 });
