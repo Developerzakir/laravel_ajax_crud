@@ -111,14 +111,14 @@ $(document).ready(function(){
   })
 
   function product(page){
-    $.ajax({
-        url: '/pagination/paginate-data?page='+page,
-        success:function(res){
-            $('.table-data').html(res);
-        }
+        $.ajax({
+            url: '/pagination/paginate-data?page='+page,
+            success:function(res){
+                $('.table-data').html(res);
+            }
 
-    })
-  }
+        })
+    }
 
   //export products
   document.getElementById('exportData').addEventListener('click', function () {

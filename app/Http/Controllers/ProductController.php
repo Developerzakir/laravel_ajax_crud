@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->paginate(3);
+        $products = Product::paginate(3);
         return view('products', compact('products'));
     } //end method
 
@@ -71,12 +71,22 @@ class ProductController extends Controller
         ]);
     }//end method
 
-    public function pagination()
-    {
-        $products = Product::latest()->paginate(5);
-        return view('pagination_products', compact('products'))->render();
+    // public function pagination()
+    // {
+    //     $products = Product::latest()->paginate(3);
+    //     return view('pagination_products', compact('products'))->render();
 
-    } //end method
+    // } //end method
+
+    public function pagination(Request $request)
+    {
+        $products = Product::paginate(3);
+
+        if ($request->ajax()) {
+            return view('pagination_products', compact('products'))->render();
+        }
+        return view('products', compact('products'));
+   }
 
     public function exportProducts()
     {

@@ -8,9 +8,9 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($products as $key => $item)
+      @foreach ($products as  $item)
       <tr>
-        <th scope="row">{{$key+1}}</th>
+        <th scope="row">{{$item->id}}</th>
         <td>{{$item->name}}</td>
         <td>{{$item->price}}</td>
         <td>
