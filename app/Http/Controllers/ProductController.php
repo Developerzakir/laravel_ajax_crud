@@ -93,4 +93,20 @@ class ProductController extends Controller
        return Excel::download(new ProductsExport, 'products.xlsx');
     } //end method
 
+    public function searchProduct(Request $request)
+    {
+        $products = Product::where('name', 'like', '%' . $request->search_string. '%')
+         ->orWhere('price', 'like', '%' . $request->search_string. '%')
+         ->orderBy('id', 'DESC')
+         ->paginate(3);
+
+         if($products->count() >= 1){
+            return view('pagination_products', compact('products'))->render();
+         }else{
+            return response()->json([
+                'status' => 'not_found'
+            ]);
+         }
+    } //end method
+
 }

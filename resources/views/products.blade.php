@@ -23,8 +23,11 @@
           <div class="d-flex">
             <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add Product</a>
            
-           <a href="javascript:void(0)" id="exportData" class="btn btn-primary ms-auto">Export Data</a>
+           <a href="javascript:void(0)" id="exportData" class="btn btn-primary ms-auto">Export Data</a> <br>
+
+           
           </div>
+          <input type="text" name="search" id="search" class="form-control mb-3 mt-3" placeholder="search product here...">
           <div class="table-data mt-3">
             <table class="table table-bordered">
               <thead>

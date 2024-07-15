@@ -145,6 +145,29 @@ $(document).ready(function(){
 });
 
 
+    //search product
+    $(document).on('keyup', function(){
+           
+            let search_string = $("#search").val();
+
+            $.ajax({
+                url: "{{route('search.product')}}",
+                method: 'GET',
+                data:{search_string:search_string},
+                success:function(res){
+                    if (res.status === 'not_found') {
+                        $('.table-data').html('<p class="text-danger">No products found</p>');
+                    } else {
+                        $('.table-data').html(res);
+                    }
+                }
+
+            });
+    })
+
+  
+
+
 
 });
 </script>
